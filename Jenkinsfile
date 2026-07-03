@@ -14,7 +14,7 @@ pipeline{
         }
         stage ('Stage three installation'){
             steps{
-                bat """ pip install -r requirements.txt """
+                bat """ "C:\Users\Laxmi\AppData\Local\Programs\Python\Python313\python.exe" -m pip install -r requirements.txt"""
             }
         }
         stage ('Stage four run project'){
