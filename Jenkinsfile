@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage ('Stage one git code '){
             steps{
-               git brach : "main" ,
+               git branch : "main" ,
                 url : "https://github.com/laxmipsavadati-code/PythonfromPepeline.git"
             }
         }
