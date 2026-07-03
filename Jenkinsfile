@@ -9,7 +9,7 @@ pipeline{
         }
         stage ('Stage two check python'){
             steps{
-                bat '"C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python312\\python.exe" --version'
+                bat bat '"C:\\Users\\Laxmi\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" --version'
             }
         }
         stage ('Stage three installation'){
