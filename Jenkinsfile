@@ -1,25 +1,28 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage ('Stage one git code '){
-            steps{
-               git branch : "main" ,
-                url : "https://github.com/laxmipsavadati-code/PythonfromPepeline.git"
+
+    environment {
+        PYTHON = 'C:/Users/Laxmi/AppData/Local/Programs/Python/Python313/python.exe'
+    }
+
+    stages {
+
+        stage('Check Python') {
+            steps {
+                bat '"%PYTHON%" --version'
             }
         }
-        stage ('Stage two check python'){
-            steps{
-                 bat '"C:\\Users\\Laxmi\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" --version'
+
+        stage('Install Dependencies') {
+            steps {
+                bat '"%PYTHON%" -m pip install --upgrade pip'
+                bat '"%PYTHON%" -m pip install -r requirements.txt'
             }
         }
-        stage ('Stage three installation'){
-            steps{
-                bat """ "C:\Users\Laxmi\AppData\Local\Programs\Python\Python313\python.exe" -m pip install -r requirements.txt"""
-            }
-        }
-        stage ('Stage four run project'){
-            steps{
-                bat """  python app.py  """
+
+        stage('Run Flask') {
+            steps {
+                bat '"%PYTHON%" app.py'
             }
         }
     }
